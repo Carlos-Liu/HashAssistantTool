@@ -63,7 +63,7 @@ namespace HashAssistant
           var hashFileDirectory = Path.GetDirectoryName(fileFullPath);
           var nameOfFileToCalcHash = Path.GetFileNameWithoutExtension(fileFullPath);
           var hashFileName = string.IsNullOrWhiteSpace(hashFileFullPath)
-            ? $"hash ({nameOfFileToCalcHash}).txt"
+            ? $"{nameOfFileToCalcHash}.sha512"
             : hashFileFullPath;
 
           hashFileFullPath = Path.Combine(hashFileDirectory, hashFileName);

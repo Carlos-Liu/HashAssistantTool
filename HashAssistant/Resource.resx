@@ -137,7 +137,7 @@ Actual Hash Value: {2}</value>
 Usage: HashAssistant.exe [File full path] [Hash file name]
 
 [File full path]: Required. The full file path of the file to calculate the hash value.
-[Hash file name]: Optional. The file name which store the calculated hash value. The file will be saved in the same directory with the file that checks hash value if the argument only includes hash file name. The default hash file name is 'hash (name of file to calculate hash).txt' is this argument is not provided. </value>
+[Hash file name]: Optional. The file name which store the calculated hash value. The file will be saved in the same directory with the file that checks hash value if the argument only includes hash file name. The default hash file name is 'name of file to calculate hash.sha512' is this argument is not provided. </value>
   </data>
   <data name="Msg_InputHashPrompt" xml:space="preserve">
     <value>Please input the expected hash value.</value>
