@@ -109,7 +109,7 @@ namespace BCI.HashAssistant {
         ///Usage: HashAssistant.exe [File full path] [Hash file name]
         ///
         ///[File full path]: Required. The full file path of the file to calculate the hash value.
-        ///[Hash file name]: Optional. The file name which store the calculated hash value. The file will be saved in the same directory with the file that checks hash value if the argument only includes hash file name. The default h [rest of string was truncated]&quot;;.
+        ///[Hash file name]: Optional. The file name which stores the calculated hash value. The file will be saved in the same directory with the file that checks hash value if the argument only includes hash file name. The default  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Msg_CmdLinePrompt {
             get {
@@ -134,6 +134,15 @@ namespace BCI.HashAssistant {
         internal static string Msg_InputHashPrompt {
             get {
                 return ResourceManager.GetString("Msg_InputHashPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This software only supports dragging and dropping a single file..
+        /// </summary>
+        internal static string Msg_OnlySupportDropSingleFile {
+            get {
+                return ResourceManager.GetString("Msg_OnlySupportDropSingleFile", resourceCulture);
             }
         }
         

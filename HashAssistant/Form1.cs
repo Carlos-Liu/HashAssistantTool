@@ -4,6 +4,8 @@ namespace HashAssistant
 {
   public partial class FormHashAssistant : Form
   {
+    private CheckResultPane checkResultPane = new CheckResultPane();
+
     private string FileToCheck
     {
       get { return textBoxFileFullPath.Text.Trim(); }
@@ -27,6 +29,15 @@ namespace HashAssistant
     public FormHashAssistant()
     {
       InitializeComponent();
+
+      checkResultPane.Anchor = AnchorStyles.Left;
+      checkResultPane.IsPassed = false;
+      checkResultPane.Location = new Point(3, 140);
+      checkResultPane.Name = "checkResultPane";
+      checkResultPane.Size = new Size(200, 36);
+      checkResultPane.TabIndex = 9;
+      tableLayoutPanel1.Controls.Add(this.checkResultPane, 2, 3);
+
       ResetCheckingRelatedControls();
     }
 
@@ -72,14 +83,19 @@ namespace HashAssistant
     private void buttonBrowseHashFile_Click(object sender, EventArgs e)
     {
       var fileNameToOpen = BrowseFile();
-      if (string.IsNullOrWhiteSpace(fileNameToOpen))
+      LoadHashFromFile(fileNameToOpen);
+    }
+
+    private void LoadHashFromFile(string hashFile)
+    {
+      if (string.IsNullOrWhiteSpace(hashFile))
       {
         return;
       }
 
       try
       {
-        string fileContent = File.ReadAllText(fileNameToOpen);
+        string fileContent = File.ReadAllText(hashFile);
         ExpectedHashValue = fileContent;
       }
       catch (Exception ex)
@@ -138,6 +154,64 @@ namespace HashAssistant
       var areHashTheSame = string.Equals(ExpectedHashValue, actualHashValue, StringComparison.OrdinalIgnoreCase);
       checkResultPane.IsPassed = areHashTheSame;
       checkResultPane.Visible = true;
+    }
+
+    private void SupportDropFiles(DragEventArgs e)
+    {
+      if (e == null || e.Data == null) return;
+
+      if (e.Data.GetDataPresent(DataFormats.FileDrop))
+      {
+        e.Effect = DragDropEffects.All;
+      }
+      else
+      {
+        e.Effect = DragDropEffects.None;
+      }
+    }
+
+    private string GetDroppedFile(DragEventArgs e)
+    {
+      if (e == null || e.Data == null) return string.Empty;
+
+      string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+      if (files.Length > 1)
+      {
+        MessageBox.Show(
+          Resource.Msg_OnlySupportDropSingleFile,
+          Resource.DialogTitleInformation,
+          MessageBoxButtons.OK,
+          MessageBoxIcon.Information);
+        return string.Empty;
+      }
+
+      return files[0];
+    }
+
+    private void textBoxFileFullPath_DragEnter(object sender, DragEventArgs e)
+    {
+      SupportDropFiles(e);
+    }
+
+    private void textBoxFileFullPath_DragDrop(object sender, DragEventArgs e)
+    {
+      var droppedFile = GetDroppedFile(e);
+      if (string.IsNullOrEmpty(droppedFile)) return;
+
+      FileToCheck = droppedFile;
+    }
+
+    private void textBoxExpectedHash_DragEnter(object sender, DragEventArgs e)
+    {
+      SupportDropFiles(e);
+    }
+
+    private void textBoxExpectedHash_DragDrop(object sender, DragEventArgs e)
+    {
+      var droppedFile = GetDroppedFile(e);
+      if (string.IsNullOrEmpty(droppedFile)) return;
+
+      LoadHashFromFile(droppedFile);
     }
   }
 }

@@ -137,7 +137,7 @@ Actual Hash Value: {2}</value>
 Usage: HashAssistant.exe [File full path] [Hash file name]
 
 [File full path]: Required. The full file path of the file to calculate the hash value.
-[Hash file name]: Optional. The file name which store the calculated hash value. The file will be saved in the same directory with the file that checks hash value if the argument only includes hash file name. The default hash file name is 'name of file to calculate hash.sha512' is this argument is not provided. </value>
+[Hash file name]: Optional. The file name which stores the calculated hash value. The file will be saved in the same directory with the file that checks hash value if the argument only includes hash file name. The default hash file name is '{name of file to calculate hash}.sha512' if this argument is not provided.</value>
   </data>
   <data name="Msg_InputHashPrompt" xml:space="preserve">
     <value>Please input the expected hash value.</value>
@@ -165,5 +165,8 @@ Detailed Error: {0}</value>
   </data>
   <data name="pass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\pass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Msg_OnlySupportDropSingleFile" xml:space="preserve">
+    <value>This software only supports dragging and dropping a single file.</value>
   </data>
 </root>
