@@ -29,3 +29,6 @@ Launch the HashAssistant.exe without passing any argument. It can check if the h
 
 **Check Hash**: Click this button to start to compute hash for the selected file and show the verify result to the user.
 If the hash value check is passed, the result is shown on the right of the 'Check Hash' button.
+
+# Reference
+```certutil.exe -hashfile C:\Trunk\Trunk.zip SHA512```

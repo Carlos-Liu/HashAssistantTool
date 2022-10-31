@@ -10,7 +10,7 @@ namespace BCI.HashAssistant
       set
       {
         _isPassed = value;
-        labelResult.Text = _isPassed ? "Pass" : "Failed";
+        labelResult.Text = _isPassed ? "Pass" : "Fail";
         pictureBox.Image = _isPassed ? Resource.pass : Resource.error;
       }
     }

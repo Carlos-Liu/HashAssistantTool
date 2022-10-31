@@ -28,17 +28,18 @@ namespace HashAssistant
 
     public FormHashAssistant()
     {
-      InitializeComponent();
+        InitializeComponent();
 
-      checkResultPane.Anchor = AnchorStyles.Left;
-      checkResultPane.IsPassed = false;
-      checkResultPane.Location = new Point(3, 140);
-      checkResultPane.Name = "checkResultPane";
-      checkResultPane.Size = new Size(200, 36);
-      checkResultPane.TabIndex = 9;
-      tableLayoutPanel1.Controls.Add(this.checkResultPane, 2, 3);
+        checkResultPane.Anchor = AnchorStyles.Left;
+        checkResultPane.IsPassed = false;
+        checkResultPane.Location = new Point(3, 140);
+        checkResultPane.Name = "checkResultPane";
+        checkResultPane.Size = new Size(250, 36);
+        checkResultPane.TabIndex = 9;
+        tableLayoutPanel1.SetColumnSpan(checkResultPane, 2);
+        tableLayoutPanel1.Controls.Add(checkResultPane, 2, 3);
 
-      ResetCheckingRelatedControls();
+        ResetCheckingRelatedControls();
     }
 
     private void ResetCheckingRelatedControls()
